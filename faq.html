@@ -83,131 +83,38 @@ and is wrapped around the whole page content. -->
     
 			<p class='w3-text-pink topp-margin'><b>Second Classifier</b></p>
 			
-			<p>The second classifier is also built using multiple convolutional layers, first Prewitt edge detection is used to detect the edges and then the edge map is concatenated with the original input image. So this classifier takes in a 4-channel image.</p>
+			<p>The second classifier is built using 4 convolutional layers.</p>
     
 			<p class='w3-text-pink topp-margin'><b>Third Classifier</b></p>
 			
 			<p>The third classifier only considers the red channel of the input image to give the prediction scores.</p>
 			
+			<p class='w3-text-pink topp-margin'><b>Sugeno Integral based Ensemble</b></p>
+			
+			<p>In the case of a fuzzy inference system, output values are calculated based on some fuzzy rules andinput variables. These rules can be interpreted into two ways which are known as conjunctive rules anddisjunctive rules. Weighted maximum is a way of interpreting fuzzy inference rules in the conjunctivemanner, and weighted minimum is one way of interpreting fuzzy inference rules in a disjunctive manner.These  two  interpretations  of  fuzzy  inference  rules  are  unified  by  the  Sugeno  integral  method  usingweighted  maximum  and  weighted  minimum.  Here,  one  important  aspect  of  the  weighted  maximumand  the  weighted  minimum  used  by  Sugeno  integral  is  that  the  weighting  vector  does  not  belong  toany probability distribution, which means that the sum of the weights does not equal to 1. Hence, theaggregation operator that uses these weights does not satisfy the unanimity. Also, in the case of weightedmaximum and the weighted minimum, the values that need to be aggregated are independent of eachother which is not the case in the Sugeno integral method. So it can be said that the Sugeno integralcombines the conclusions from the different fuzzy inference rules, where the rules are not independent.As the weights are not probabilistic and need to be determined experimentally, so in order to apply theSugeno integral method to combine the predictions from three base learners, we have used optimization algorithms to get optimal fuzzy measures.</p>	
+    
+  		<p class='w3-text-pink topp-margin'><b>Choquet Integral based Ensemble</b></p>
+			
+			<p>Aggregation refers to the process of collecting performance scores of each classifier into a single global score.  The function that is used to combine the scores into a single global score is known as aggregation operator.Normally  as  the  aggregation  operator,  we  have  weighted  average  or  quasi  arithmetic  means  butin  our  case  it  is  the  Choquet  fuzzy  integral  operator.   The  Choquet  fuzzy  integral  method  has  been used previously in many pattern recognition problems.  The advantage of using it is thatit  harnesses  the  degree  of  uncertainty  that  is  present  in  the  decision  scores  that  we  get  as  additionalinformation during the fusion of classifiers which is absent in normal ensembling methods.  So the endresult is the generalization of aggregation operators on a set of confidence scores which are known asfuzzy measures.  These fuzzy measures are determined using the optimization algorithms.</p>	
+
+			
+			<p class='w3-text-pink topp-margin'><b>Research Publication</b></p>
+			
+			<p>More better understanding of the ensemble methods used here please refer to <a href="https://www.sciencedirect.com/science/article/abs/pii/S1568494621009881" target='_blank' class="w3-text-blue">data</a> </p>
+			
+
+			
+			
 		
-
-			
-			<p class='w3-text-pink topp-margin'><b>Limitations</b></p>
-			
-			<p>This project can be expanded to cover many more lung diseases.</p>
-			
-			<p>The accuracy can be improved using state-of-the-art ensemble methods.</p>
-			
-
-			<p class='w3-text-pink topp-margin'><b>Published Design</b></p>
-			
-			<p>The design code and the step-by-step process used to train and test the model has been published on Kaggle. You can find the open source notebook <a href="https://www.kaggle.com/vbookshelf/child-pneumonia-diagnoser-tensorflow-js-web-app/notebook" target='_blank' class="w3-text-blue">here</a>. The test results are also available in the notebook.</p>
-			
-			
 			<p class='w3-text-pink topp-margin'><b>Dataset Licence</b></p>
 			
-			<p>The model was trained using image <a href="https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia" target='_blank' class="w3-text-blue">data</a> that was released under a CC BY 4.0 licence.</p>
+			<p>The models have been trained using the dataset given in <a href="https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia" target='_blank' class="w3-text-blue">data</a> that was released under a CC BY 4.0 licence.</p>
 			
 			<hr>
 			
 			
-			
-			
-			<!-- FAQ Section -->
-			
-			
-			<div class="w3-center title adjust-fontcolor logo w3-center w3-margin">
-	
-			<h1 class="space-letters w3-text-pink"><b>FAQ</b></h1>
 
-			</div>
-			
-			
-			
-			<p class='w3-text-black topp-margin'><b>Will I need to wait for the model to download every time I use the app?</b></p>
-			
-			<p>No. Once the model downloads it will be cached in memory. The next time you visit this site you won’t need to wait.</p>
-			
-			<p>That said, I suggest that you always use this tool with your web browser set to incognito mode. The model won’t be saved, but this will ensure that each time you visit this site you will always use the most up to date version of the model and not the old one that's stored in your device's memory.
-			</p>
-			
-			
-			
-			<p class='w3-text-black topp-margin'><b>What about patient data privacy?</b></p>
-			
-			<p>Your images are never sent to an external server. Any image you submit stays on your computer or mobile phone. This is because the model is running on your device. This is also why a batch of images can be analyzed in less than two seconds.</p>
-			
-			<p>In return for a short wait while the model downloads you get data privacy and fast processing.
-				The tech that makes this possible is called Tensorflow.js. It was created by Google.</p>
-			
-			
-			
-			
-			
-			
-			<p class='w3-text-black topp-margin'><b>What do the decimal numbers mean?</b></p>
-			
-			<p>They are probability scores between 0 and 1. They show how confident the model is that a particular condition is present on the image. <br>
-				For example, <i>Viral Pneumonia: 0.751</i> means that the model is 75% sure that viral pneumonia is present on the x-ray.</p>
-			
-			
-			
-			
-			
-			
-			<p class='w3-text-black topp-margin'><b>How do I use this app on a computer?
-			</b></p>
-			
-			<p>- Go to this site on your computer.<br>
-				- Click the orange button.<br>
-			- Select one image or multiple images and click ‘Open’.<br>
-			- The app will print results for each image.
-			</p>
-			
-			
-			
-			
-			
-			<p class='w3-text-black topp-margin'><b>How do I use this app on a mobile phone?
-			</b></p>
-			
-			<p>You can take a new photo or you can submit photos that are stored on your phone. The steps below apply to Android. iOS may be similar but I'm not sure.</p>
-			
-			<p class="w3-text-pink"><b>[ 1 ] Take a photo</b></p>
-			<p>- Go to this site on your phone.<br>
-			- Tap the orange button.<br>
-			- Select “Camera”<br>
-			- Take a photo<br>
-			- Tap the "tick"<br>
-			- The photo will be sent to the app for analysis.
-			</p>
-			
-			
-			<p class="w3-text-pink"><b>[ 2 ] Use images from your photo folder</b></p>
-			<p>- Go to this site on your phone.<br>
-				- Tap the orange button.<br>
-				- Tap "Files"<br>
-				- Tap the image name<br>
-				- To submit a batch of images, tap each image (tick) to select it and then tap "Open". 
-			</p>
-			
-			
-			
-				
-			<p class='w3-text-black topp-margin'><b> What would it take to make this tool more accurate?</b></p>
-			
-			<p>Two things are needed - more high quality labeled training data and field testing.</p>
-			
-		
-				
-				
-				
-			<p class='w3-text-black topp-margin'><b>Where can I send feedback or report bugs?</b></p>
-			
-			<p>Please feel free to email your thoughts or ideas to:<br>
-				<span class="w3-text-pink"><b>contact -at- woza -dot- work</b></span></p>
-				
-				
+							
 			
 			
 			
@@ -236,4 +143,3 @@ and is wrapped around the whole page content. -->
 </div> <!-- w3-content -->
 </body>
 </html>
-
